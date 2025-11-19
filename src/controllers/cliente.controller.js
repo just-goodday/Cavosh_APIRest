@@ -16,6 +16,18 @@ const setCliente = async (req, res) => {
     res.send( { success, data, message } )
 }
 
+const getClienteCodigo = async (req, res) => {
+    const rows = await services.getClienteCodigo(req, res)
+    const success = rows.id ? true : false
+    const data = success ? rows : null
+    const message = success ? "Codigo generado" : rows.error
+    res.send( { success, data, message } )
+}
+
+
+
 export const controller = {
-    getCliente, setCliente,
+    getCliente, 
+    setCliente,
+    getClienteCodigo,
 }
